@@ -1,4 +1,4 @@
-package org.digitalcrafting.gateway.config;
+package org.digitalcrafting.theOne.serviceDiscovery.config;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 @Configuration
 @EnableAspectJAutoProxy
-@ComponentScan(basePackages = "org.digitalcrafting.gateway")
+@ComponentScan(basePackages = "org.digitalcrafting.theOne.serviceDiscovery")
 public class RestConfig implements WebMvcConfigurer {
 
     private final Environment env;

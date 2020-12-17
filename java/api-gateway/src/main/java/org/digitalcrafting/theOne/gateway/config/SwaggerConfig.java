@@ -1,4 +1,4 @@
-package org.digitalcrafting.gateway.config;
+package org.digitalcrafting.theOne.gateway.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

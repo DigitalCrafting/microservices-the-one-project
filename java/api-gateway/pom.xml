@@ -1,6 +1,6 @@
 <project>
     <parent>
-        <groupId>com.digitalcrafting</groupId>
+        <groupId>org.digitalcrafting.theOne</groupId>
         <artifactId>the-one-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>

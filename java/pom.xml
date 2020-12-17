@@ -8,7 +8,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <version>0.0.1-SNAPSHOT</version>
-    <groupId>com.digitalcrafting</groupId>
+    <groupId>org.digitalcrafting.theOne</groupId>
     <artifactId>the-one-parent</artifactId>
     <packaging>pom</packaging>
 
@@ -29,6 +29,7 @@
         <javax.activation-api.version>1.2.0</javax.activation-api.version>
         <springfox-swagger2.version>2.9.2</springfox-swagger2.version>
         <bcprov-jdk15on.version>1.63</bcprov-jdk15on.version>
+        <httpclient.version>4.5.13</httpclient.version>
     </properties>
 
     <dependencyManagement>
@@ -88,6 +89,11 @@
                 <artifactId>bcprov-jdk15on</artifactId>
                 <version>${bcprov-jdk15on.version}</version>
             </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
@@ -111,10 +117,6 @@
             <artifactId>spring-boot-starter-aop</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
         </dependency>
@@ -123,6 +125,19 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
 
+        <!-- Apache libs -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>httpclient</artifactId>
+        </dependency>
+
+        <!-- Lombok -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+
+        <!-- JavaX -->
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
@@ -144,6 +159,7 @@
             <artifactId>activation</artifactId>
         </dependency>
 
+        <!-- Swagger -->
         <dependency>
             <groupId>io.springfox</groupId>
             <artifactId>springfox-swagger2</artifactId>

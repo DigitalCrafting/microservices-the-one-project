@@ -1,4 +1,4 @@
-package org.digitalcrafting.serviceDiscovery;
+package org.digitalcrafting.theOne.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

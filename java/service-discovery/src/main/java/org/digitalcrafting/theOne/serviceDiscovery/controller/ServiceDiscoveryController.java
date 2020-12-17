@@ -1,14 +1,15 @@
-package org.digitalcrafting.gateway.controller;
+package org.digitalcrafting.theOne.serviceDiscovery.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/gateway/api/proxy/v1")
-public class ProxyController {
+@RequestMapping("/discovery/api/v1")
+public class ServiceDiscoveryController {
+
     @GetMapping("/")
     public String test() {
-        return "I'm alive";
+        return "ServiceDiscovery is alive!";
     }
 }

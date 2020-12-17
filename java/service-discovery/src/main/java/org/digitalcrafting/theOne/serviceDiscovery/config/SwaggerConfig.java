@@ -1,4 +1,4 @@
-package org.digitalcrafting.serviceDiscovery.config;
+package org.digitalcrafting.theOne.serviceDiscovery.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

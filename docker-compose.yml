@@ -1,0 +1,21 @@
+version: "3.9"
+
+services:
+  the-one-gateway:
+    build: ./java/api-gateway
+    container_name: the-one-gateway
+    ports:
+      - "8080:8080"
+    networks:
+      - the-one-network
+  the-one-discovery:
+    build: ./java/service-discovery
+    container_name: the-one-discovery
+    ports:
+      - "8081:8081"
+    networks:
+      - the-one-network
+
+networks:
+  the-one-network:
+    driver: bridge

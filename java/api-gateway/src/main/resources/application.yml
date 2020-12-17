@@ -1,0 +1,7 @@
+server:
+  port: 8080
+
+the-one:
+  discovery:
+    ip: the-one-discovery
+    port: 8081
