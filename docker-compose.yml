@@ -15,6 +15,13 @@ services:
       - "8081:8081"
     networks:
       - the-one-network
+  the-one-auth-service:
+    build: ./haskell/auth-service
+    container_name: the-one-auth-service
+    ports:
+      - 8082:8080
+    networks:
+      - the-one-network
 
 networks:
   the-one-network:
