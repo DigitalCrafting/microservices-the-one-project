@@ -26,3 +26,12 @@ then
 
   docker build -t digitalcrafting/the-one-auth-service ./haskell/auth-service
 fi
+
+if [ $whichProjects == 'all' ] || [ $whichProjects == 'python' ]
+then
+  docker image rm digitalcrafting/the-one-user-service
+  docker image rm digitalcrafting/the-one-outposts-service
+
+  docker build -t digitalcrafting/the-one-user-service ./python/user-service
+  docker build -t digitalcrafting/the-one-user-service ./python/outposts-service
+fi

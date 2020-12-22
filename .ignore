@@ -1,0 +1,7 @@
+# Ignored directories for Doom Emacs
+
+/java/**/target
+/python/venv
+**/idea
+**/.cabal-sandbox
+**/dist
