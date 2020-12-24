@@ -35,3 +35,12 @@ then
   docker build -t digitalcrafting/the-one-user-service ./python/user-service
   docker build -t digitalcrafting/the-one-user-service ./python/outposts-service
 fi
+
+if [ $whichProjects == 'all' ] || [ $whichProjects == 'golang' ]
+then
+  docker image rm digitalcrafting/the-one-logging-service
+
+  go build -o ./golang/logging-service/dist/application.sh ./golang/logging-service/src
+
+  docker build -t digitalcrafting/the-one-logging-service ./golang/logging-service
+fi
