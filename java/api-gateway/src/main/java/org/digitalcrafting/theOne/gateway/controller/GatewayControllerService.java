@@ -25,7 +25,7 @@ public class GatewayControllerService {
     }
 
     public ResponseEntity<String> proxyRequest(HttpServletRequest request) {
-        String discoveryUrl = "http://" + this.discoveryIp + ":" + this.discoveryPort + "/discovery/api/v1/";
+        String discoveryUrl = "http://" + this.discoveryIp + ":" + this.discoveryPort + "/discovery/v1/";
         return restTemplate.getForEntity(discoveryUrl, String.class);
     }
 }

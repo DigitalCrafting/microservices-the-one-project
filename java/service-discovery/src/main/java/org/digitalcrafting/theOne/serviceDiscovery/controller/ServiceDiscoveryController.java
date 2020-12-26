@@ -5,11 +5,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/discovery/api/v1")
+@RequestMapping("/discovery/v1")
 public class ServiceDiscoveryController {
 
     @GetMapping("/")
-    public String test() {
+    public String healthCheck() {
         return "ServiceDiscovery is alive!";
     }
 }
