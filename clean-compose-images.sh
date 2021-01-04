@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 docker image rm microservices-the-one-project_the-one-gateway
 docker image rm microservices-the-one-project_the-one-discovery
