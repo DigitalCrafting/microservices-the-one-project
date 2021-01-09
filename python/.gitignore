@@ -1,1 +1,4 @@
 /venv
+
+# This file is generated
+**/src/config/config.py
