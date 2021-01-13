@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Make sure the root directory is the scripts directory
-cd $(dirname $0)
+cd $(dirname $0) && cd ..
 
 if [ "$1" == "dev-local" ]
 then

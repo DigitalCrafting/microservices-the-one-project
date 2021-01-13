@@ -1,0 +1,129 @@
+#!/usr/bin/python3
+
+import click
+import os
+
+os.chdir("..")
+WORKING_DIR = os.getcwd()
+VERSION = "0.0.1"
+
+servicesDict = {
+    "user": {
+        "dir": f"{WORKING_DIR}/python/user-service",
+        "docker-image": "digitalcrafting/the-one-user-service"
+    },
+    "outpost": {
+        "dir": f"{WORKING_DIR}/python/outposts-service",
+        "docker-image": "digitalcrafting/the-one-outpost-service"
+    },
+    "gateway": {
+        "dir": f"{WORKING_DIR}/java/api-gateway",
+        "docker-image": "digitalcrafting/the-one-gateway"
+    },
+    "discovery": {
+        "dir": f"{WORKING_DIR}/java/service-discovery",
+        "docker-image": "digitalcrafting/the-one-discovery"
+    }
+}
+
+
+def get_services_as_list(servicesStr):
+    if servicesStr == "all":
+        return servicesDict.keys()
+    else:
+        return servicesStr.split(',')
+
+
+@click.command(name="build", help="Build services")
+@click.option("--services", "-s", "servicesStr", default="all")
+@click.option("--profile", "-p", "profile", type=click.Choice(["dev-local", "dev-docker"]), default="dev-local")
+def local_build(servicesStr, profile):
+    services = get_services_as_list(servicesStr)
+
+    for ser in services:
+        os.system(f'{servicesDict[ser]["dir"]}/scripts/build.sh {profile}')
+
+
+@click.command(name="start", help="Start services")
+@click.option("--services", "-s", "servicesStr", default="all")
+@click.option("--profile", "-p", "profile", type=click.Choice(["dev-local"]), default="dev-local")
+def local_start(servicesStr, profile):
+    services = get_services_as_list(servicesStr)
+
+    for ser in services:
+        os.system(f'{servicesDict[ser]["dir"]}/scripts/start.sh {profile} ')
+
+
+@click.command(name="build", help="Build services and docker images")
+@click.option("--services", "-s", "servicesStr", default="all")
+@click.option("--profile", "-p", "profile", type=click.Choice(["dev-docker"]), default="dev-docker")
+def docker_build(servicesStr, profile):
+    services = get_services_as_list(servicesStr)
+
+    for ser in services:
+        os.system(f'docker image rm {servicesDict[ser]["docker-image"]}')
+        os.system(f'{servicesDict[ser]["dir"]}/scripts/build.sh {profile}')
+        os.system(f'docker build -t {servicesDict[ser]["docker-image"]} {servicesDict[ser]["dir"]}/')
+
+
+@click.command(name="start", help="Start docker containers")
+@click.option("--services", "-s", "servicesStr", default="all")
+@click.option("--profile", "-p", "profile", type=click.Choice(["dev-docker"]), default="dev-docker")
+def docker_start(servicesStr, profile):
+    services = get_services_as_list(servicesStr)
+
+    for ser in services:
+        os.system(f'{servicesDict[ser]["dir"]}/scripts/start.sh {profile} {servicesDict[ser]["docker-image"]}')
+
+
+@click.command(name="start", help="Start docker compose")
+def docker_compose_start():
+    os.system("docker-compose up --build")
+
+
+@click.command(name="stop", help="Start docker compose")
+def docker_compose_stop():
+    os.system("docker-compose down")
+    os.system("./scripts/clean-compose-images.sh")
+
+
+@click.group("local", help="Start and build services locally")
+def local():
+    pass
+
+
+local.add_command(local_build)
+local.add_command(local_start)
+
+
+@click.group("docker", help="Start and build services for docker")
+def docker():
+    pass
+
+
+docker.add_command(docker_build)
+docker.add_command(docker_start)
+
+
+@click.group("docker-compose", help="Docker compose commands")
+def docker_compose():
+    pass
+
+
+docker_compose.add_command(docker_compose_start)
+docker_compose.add_command(docker_compose_stop)
+
+
+@click.group()
+@click.version_option(VERSION)
+def cli():
+    pass
+
+
+cli.add_command(local)
+cli.add_command(docker)
+cli.add_command(docker_compose)
+
+
+if __name__ == "__main__":
+    cli()

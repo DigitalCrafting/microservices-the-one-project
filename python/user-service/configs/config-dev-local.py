@@ -1,5 +1,5 @@
 CONFIG: dict = {
-    'ip': 'localhost',
-    'port': '8081',
+    'discoveryIp': 'localhost',
+    'discoveryPort': '8081',
     'appName': 'user'
 }

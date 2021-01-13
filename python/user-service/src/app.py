@@ -1,16 +1,12 @@
 import requests
 from flask import Flask
-from config import config
+from config.config import CONFIG
 
 app = Flask(__name__)
 
-
-
-@app.route('/user')
+@app.route('/user', methods=['GET'])
 def imAlive():
-
-    # response = requests.get("http://the-one-discovery:8080/discovery/v1/")
-    requests.post("http://localhost:8080/discovery/v1/", json={
+    requests.post(f"http://{CONFIG['discoveryIp']}:{CONFIG['discoveryPort']}/discovery/v1/", json={
         'serviceName': 'user',
         'serviceIp': 'localhost',
         'servicePort': '5000'
