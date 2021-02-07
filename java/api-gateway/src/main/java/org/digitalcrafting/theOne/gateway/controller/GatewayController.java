@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/v1")
+@RequestMapping("/api")
 public class GatewayController {
 
     private final GatewayControllerService service;

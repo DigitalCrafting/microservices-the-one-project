@@ -84,7 +84,7 @@ def docker_compose_start():
 @click.command(name="stop", help="Start docker compose")
 def docker_compose_stop():
     os.system("docker-compose down")
-    os.system("./scripts/clean-compose-images.sh")
+    os.system("./cli/scripts/clean-compose-images.sh")
 
 
 @click.group("local", help="Start and build services locally")
