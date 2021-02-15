@@ -3,7 +3,9 @@
 import click
 import os
 
-os.chdir("..")
+FILE_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
+
+os.chdir(FILE_DIRECTORY + "/..")
 WORKING_DIR = os.getcwd()
 VERSION = "0.0.1"
 
@@ -41,6 +43,10 @@ def local_build(servicesStr, profile):
     services = get_services_as_list(servicesStr)
 
     for ser in services:
+        if ser != "discovery":
+            os.system(
+                f'cp ./cli/scripts/wait-for-service-{profile}.sh {servicesDict[ser]["dir"]}/scripts/wait-for-service.sh'
+            )
         os.system(f'{servicesDict[ser]["dir"]}/scripts/build.sh {profile}')
 
 
@@ -51,7 +57,7 @@ def local_start(servicesStr, profile):
     services = get_services_as_list(servicesStr)
 
     for ser in services:
-        os.system(f'{servicesDict[ser]["dir"]}/scripts/start.sh {profile} ')
+        os.system(f'gnome-terminal -e "bash -c {servicesDict[ser]["dir"]}/scripts/start.sh {profile}"')
 
 
 @click.command(name="build", help="Build services and docker images")

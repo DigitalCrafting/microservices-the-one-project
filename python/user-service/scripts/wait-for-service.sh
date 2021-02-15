@@ -8,7 +8,7 @@ serviceUp=false
 
 for (( i=0; i<10; i++ ))
 do
-  if $(curl --output /dev/null --silent --head --fail http://localhost:8081/discovery/v1/)
+  if $(curl --output /dev/null --silent --head --fail http://the-one-discovery:8081/discovery/v1/)
   then
     serviceUp=true
     break

@@ -1,5 +1,7 @@
 CONFIG: dict = {
     'discoveryIp': 'the-one-discovery',
-    'discoveryPort': '8080',
-    'appName': 'user'
+    'discoveryPort': '8081',
+    'appName': 'user',
+    'appIp': 'localhost',
+    'appPort': '8083'
 }

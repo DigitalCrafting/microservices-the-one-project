@@ -9,10 +9,17 @@ def imAlive():
     return "User service is alive"
 
 
-if __name__ == '__main__':
+def registerServiceWithDiscovery():
+    print('UserService: Registering self with discovery on {}:{}'.format(CONFIG['discoveryIp'], CONFIG['discoveryPort']))
     requests.post(f"http://{CONFIG['discoveryIp']}:{CONFIG['discoveryPort']}/discovery/v1/", json={
-        'serviceName': 'user',
-        'serviceIp': 'localhost',
-        'servicePort': '5000'
+        'serviceName': CONFIG['appName'],
+        'serviceIp': CONFIG['appIp'],
+        'servicePort': CONFIG['appPort']
     })
-    app.run(host='0.0.0.0')
+
+def startService():
+    app.run(host='0.0.0.0', port=CONFIG['appPort'])
+
+if __name__ == '__main__':
+    registerServiceWithDiscovery()
+    startService()

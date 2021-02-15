@@ -12,7 +12,7 @@ services:
     build: ./java/service-discovery
     container_name: the-one-discovery
     ports:
-      - "8081:8080"
+      - "8081:8081"
     networks:
       - the-one-network
 #  the-one-auth-service:
@@ -26,16 +26,16 @@ services:
     build: ./python/user-service
     container_name: the-one-user-service
     ports:
-      - 8083:5000
+      - 8083:8083
     networks:
       - the-one-network
-#  the-one-outposts-service:
-#    build: ./python/outposts-service
-#    container_name: the-one-outposts-service
-#    ports:
-#      - 8084:5000
-#    networks:
-#      - the-one-network
+  the-one-outposts-service:
+    build: ./python/outposts-service
+    container_name: the-one-outposts-service
+    ports:
+      - 8084:8084
+    networks:
+      - the-one-network
 
 
 networks:

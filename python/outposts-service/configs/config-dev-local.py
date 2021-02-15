@@ -1,5 +1,7 @@
 CONFIG: dict = {
     'discoveryIp': 'localhost',
     'discoveryPort': '8081',
-    'appName': 'outpost'
+    'appName': 'outposts',
+    'appIp': 'localhost',
+    'appPort': '8084'
 }
