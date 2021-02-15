@@ -5,9 +5,9 @@ import os
 
 FILE_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
-os.chdir(FILE_DIRECTORY + "/..")
+os.chdir(f"{FILE_DIRECTORY}/..")
 WORKING_DIR = os.getcwd()
-VERSION = "0.0.1"
+VERSION = "0.1.0"
 
 servicesDict = {
     "user": {
@@ -57,7 +57,7 @@ def local_start(servicesStr, profile):
     services = get_services_as_list(servicesStr)
 
     for ser in services:
-        os.system(f'gnome-terminal -e "bash -c {servicesDict[ser]["dir"]}/scripts/start.sh {profile}"')
+        os.system(f'gnome-terminal -e "{servicesDict[ser]["dir"]}/scripts/start.sh {profile}"')
 
 
 @click.command(name="build", help="Build services and docker images")
@@ -68,27 +68,21 @@ def docker_build(servicesStr, profile):
 
     for ser in services:
         os.system(f'docker image rm {servicesDict[ser]["docker-image"]}')
+        if ser != "discovery":
+            os.system(
+                f'cp ./cli/scripts/wait-for-service-{profile}.sh {servicesDict[ser]["dir"]}/scripts/wait-for-service.sh'
+            )
         os.system(f'{servicesDict[ser]["dir"]}/scripts/build.sh {profile}')
         os.system(f'docker build -t {servicesDict[ser]["docker-image"]} {servicesDict[ser]["dir"]}/')
 
 
-@click.command(name="start", help="Start docker containers")
-@click.option("--services", "-s", "servicesStr", default="all")
-@click.option("--profile", "-p", "profile", type=click.Choice(["dev-docker"]), default="dev-docker")
-def docker_start(servicesStr, profile):
-    services = get_services_as_list(servicesStr)
-
-    for ser in services:
-        os.system(f'{servicesDict[ser]["dir"]}/scripts/start.sh {profile} {servicesDict[ser]["docker-image"]}')
-
-
-@click.command(name="start", help="Start docker compose")
-def docker_compose_start():
+@click.command(name="start", help="Start docker containers using compose file (only default currently)")
+def docker_start():
     os.system("docker-compose up --build")
 
 
-@click.command(name="stop", help="Start docker compose")
-def docker_compose_stop():
+@click.command(name="stop", help="Stop docker compose")
+def docker_stop():
     os.system("docker-compose down")
     os.system("./cli/scripts/clean-compose-images.sh")
 
@@ -102,22 +96,14 @@ local.add_command(local_build)
 local.add_command(local_start)
 
 
-@click.group("docker", help="Start and build services for docker")
+@click.group("docker", help="Start and build services for docker (docker-compose underneath)")
 def docker():
     pass
 
 
 docker.add_command(docker_build)
 docker.add_command(docker_start)
-
-
-@click.group("docker-compose", help="Docker compose commands")
-def docker_compose():
-    pass
-
-
-docker_compose.add_command(docker_compose_start)
-docker_compose.add_command(docker_compose_stop)
+docker.add_command(docker_stop)
 
 
 @click.group()
@@ -128,7 +114,6 @@ def cli():
 
 cli.add_command(local)
 cli.add_command(docker)
-cli.add_command(docker_compose)
 
 
 if __name__ == "__main__":
