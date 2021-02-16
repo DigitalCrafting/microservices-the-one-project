@@ -28,7 +28,12 @@ In the future I intend to add building the services using docker images instead 
 ### CLI Tools
 This project comes with CLI tool written in python and required `click` package to be installed.
 
-The CLI tool is in version 0.0.1 right now, so there are quite a few things to work on.
+Currently, it allows us to build separate services for localhost and docker-compose deployment, as well as run them. As docker command runs compose underneath, `stop` needs to be called after killing `start` process.
+
+Usage:
+
+* `theonecli (local) (build|start) (--services|-s) <service,names>`
+* `theonecli (docker) (build|start|stop) (--services|-s) <service,names>`
 
 After adding the scripts directory to PATH we can use the CLI as follows:
 `theonecli (local|docker) (start|build) (--services|-s) user,outpost (--profile|-p) (dev-local|dev-docker)`
@@ -44,3 +49,12 @@ In order for the CLI tool to work the services need to contain:
 2. Dockerfile 
 
 Needlesly to say, on linux the CLI script as well as other *.sh files need to be modified using `chmod +x <file>` command if something is not working.
+
+#### CLI Changelog
+> ####v0.1.0
+> * removed `docker-compose` command, it's functionality is now in `docker` command
+> * removed option to start individual docker containers from the CLI
+> * made building and running services locally and in `docker-compose` actually work
+> ####v0.0.1
+> * initial version of the CLI
+> * available commands are: `local, docker, docker-compose`
