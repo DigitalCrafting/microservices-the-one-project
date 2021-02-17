@@ -4,12 +4,11 @@ cd $(dirname $0) && cd ..
 
 set -e
 
-if [ "$1" == "dev-docker" ]
-then
-  docker container run -p 8084:8084 --rm "$2"
-elif [ "$1" == "dev-local" ]
+if [ "$1" == "dev-local" ]
 then
   source ../venv/bin/activate
   ./scripts/wait-for-service.sh  python3 ./src/app.py
   deacivate
+else
+  echo "start.sh: Incorrect argument"
 fi

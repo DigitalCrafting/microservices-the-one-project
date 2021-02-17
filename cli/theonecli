@@ -38,7 +38,7 @@ def get_services_as_list(servicesStr):
 
 @click.command(name="build", help="Build services")
 @click.option("--services", "-s", "servicesStr", default="all")
-@click.option("--profile", "-p", "profile", type=click.Choice(["dev-local", "dev-docker"]), default="dev-local")
+@click.option("--profile", "-p", "profile", type=click.Choice(["dev-local"]), default="dev-local")
 def local_build(servicesStr, profile):
     services = get_services_as_list(servicesStr)
 
@@ -67,13 +67,11 @@ def docker_build(servicesStr, profile):
     services = get_services_as_list(servicesStr)
 
     for ser in services:
-        os.system(f'docker image rm {servicesDict[ser]["docker-image"]}')
         if ser != "discovery":
             os.system(
                 f'cp ./cli/scripts/wait-for-service-{profile}.sh {servicesDict[ser]["dir"]}/scripts/wait-for-service.sh'
             )
         os.system(f'{servicesDict[ser]["dir"]}/scripts/build.sh {profile}')
-        os.system(f'docker build -t {servicesDict[ser]["docker-image"]} {servicesDict[ser]["dir"]}/')
 
 
 @click.command(name="start", help="Start docker containers using compose file (only default currently)")
