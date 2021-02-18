@@ -51,10 +51,10 @@ In order for the CLI tool to work the services need to contain:
 Needlesly to say, on linux the CLI script as well as other *.sh files need to be modified using `chmod +x <file>` command if something is not working.
 
 #### CLI Changelog
-> ####v0.1.0
+> #### v0.1.0
 > * removed `docker-compose` command, it's functionality is now in `docker` command
 > * removed option to start individual docker containers from the CLI
 > * made building and running services locally and in `docker-compose` actually work
-> ####v0.0.1
+> #### v0.0.1
 > * initial version of the CLI
 > * available commands are: `local, docker, docker-compose`
