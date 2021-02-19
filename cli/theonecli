@@ -45,7 +45,7 @@ def local_build(servicesStr, profile):
     for ser in services:
         if ser != "discovery":
             os.system(
-                f'cp ./cli/scripts/wait-for-service-{profile}.sh {servicesDict[ser]["dir"]}/scripts/wait-for-service.sh'
+                f'cp ./cli/envs/wait-for-service-{profile}.sh {servicesDict[ser]["dir"]}/scripts/wait-for-service.sh'
             )
         os.system(f'{servicesDict[ser]["dir"]}/scripts/build.sh {profile}')
 
@@ -69,7 +69,7 @@ def docker_build(servicesStr, profile):
     for ser in services:
         if ser != "discovery":
             os.system(
-                f'cp ./cli/scripts/wait-for-service-{profile}.sh {servicesDict[ser]["dir"]}/scripts/wait-for-service.sh'
+                f'cp ./cli/envs/wait-for-service-{profile}.sh {servicesDict[ser]["dir"]}/scripts/wait-for-service.sh'
             )
         os.system(f'{servicesDict[ser]["dir"]}/scripts/build.sh {profile}')
 
