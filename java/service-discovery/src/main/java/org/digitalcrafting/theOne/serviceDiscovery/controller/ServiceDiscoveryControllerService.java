@@ -18,7 +18,7 @@ public class ServiceDiscoveryControllerService {
     }
 
     public GetServiceInfoResponse getServiceInfoIfAlive(String serviceName) {
-        ServiceModel model = storage.getServicesMap().get(serviceName);
+        ServiceModel model = storage.getServiceByName(serviceName);
         return ServiceDiscoveryConverter.convert(model);
     }
 }

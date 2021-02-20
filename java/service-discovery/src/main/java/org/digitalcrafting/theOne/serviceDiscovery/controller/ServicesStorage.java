@@ -14,7 +14,7 @@ public class ServicesStorage {
         this.servicesMap.put(serviceModel.getServiceName(), serviceModel);
     }
 
-    public Map<String, ServiceModel> getServicesMap() {
-        return new HashMap<>(servicesMap);
+    public ServiceModel getServiceByName(String serviceName) {
+        return servicesMap.get(serviceName);
     }
 }
