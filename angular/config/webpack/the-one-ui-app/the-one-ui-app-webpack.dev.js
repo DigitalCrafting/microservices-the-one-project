@@ -33,7 +33,8 @@ module.exports = webpackMerge(commonConfig, {
             {
                 test: /\.ts$/,
                 include: [
-                    helpers.root('projects/the-one-ui-app/src')
+                    helpers.root('projects/the-one-ui-app/src'),
+                    helpers.root('projects/the-one-core/')
                 ],
                 use: [
                     {

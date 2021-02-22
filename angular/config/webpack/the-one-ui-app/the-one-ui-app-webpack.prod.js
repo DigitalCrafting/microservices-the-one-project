@@ -22,7 +22,11 @@ module.exports = webpackMerge(commonConfig, {
         rules: [
             {
                 test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts|\.d\.ts)$/,
-                loader: '@ngtools/webpack'
+                loader: '@ngtools/webpack',
+                include: [
+                    helpers.root('projects/the-one-ui-app/src/app/'),
+                    helpers.root('projects/the-one-core/')
+                ]
             }
         ]
     },
