@@ -1,0 +1,12 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+    <version>0.0.1-SNAPSHOT</version>
+    <groupId>com.digitalcrafting</groupId>
+    <artifactId>db-schemas</artifactId>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>user-service</module>
+        <module>outpost-service</module>
+    </modules>
+</project>

@@ -1,0 +1,31 @@
+<project>
+    <parent>
+        <version>0.0.1-SNAPSHOT</version>
+        <groupId>com.digitalcrafting</groupId>
+        <artifactId>db-schemas</artifactId>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>db-outpost-schema</artifactId>
+    <packaging>pom</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.flywaydb</groupId>
+                <artifactId>flyway-maven-plugin</artifactId>
+                <version>4.2.0</version>
+                <configuration>
+                    <driver/>
+                    <url></url>
+                    <user></user>
+                    <password></password>
+                    <locations>
+                        filesystem:/migration
+                    </locations>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
