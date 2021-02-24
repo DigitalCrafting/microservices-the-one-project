@@ -1,6 +1,6 @@
 var webpack = require('webpack');
 var helpers = require('../../helpers');
-var webpackMerge = require('webpack-merge');
+const { merge } = require('webpack-merge');
 var htmlWebpackPlugin = require('html-webpack-plugin');
 var miniCssExtractPlugin = require('mini-css-extract-plugin');
 var commonConfig = require('./the-one-ui-app-webpack.common');
@@ -8,7 +8,7 @@ var tsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 const ENV = process.env.NODE_ENV = process.env.ENV = 'development';
 
-module.exports = webpackMerge(commonConfig, {
+module.exports = merge(commonConfig, {
     devtool: 'eval-source-map',
 
     mode: 'development',
@@ -82,6 +82,7 @@ module.exports = webpackMerge(commonConfig, {
     ],
 
     devServer: {
+        contentBase: helpers.root('projects/the-one-ui-app/src/'),
         historyApiFallback: true,
         stats: 'minimal',
         watchOptions: {

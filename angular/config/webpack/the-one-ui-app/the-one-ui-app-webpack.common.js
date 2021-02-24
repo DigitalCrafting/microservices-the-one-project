@@ -24,30 +24,35 @@ module.exports = {
                 include: [
                     helpers.root('projects/the-one-ui-app/src')
                 ],
-                exclude: [
-                    helpers.root('projects/the-one-ui-app/src/index.html')
-                ],
-                loader: 'html-loader'
-            },
-            {
-                test: /index\.html/,
-                include: [
-                    helpers.root('projects/the-one-ui-app/src/index.html')
-                ],
-                loader: 'blueimp-tmpl-loader'
+                use: [
+                    {
+                        loader: 'html-loader',
+                        options: {
+                            esModule: false,
+                        }
+                    }
+                ]
             },
             {
                 test: /\.(png|jpe?g|gif|svg|woff|woff2|tf|eot|ico)$/,
-                loader: 'file-loader?name=assets/[name].[hash].[ext]'
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: "./assets/[name].[hash].[ext]"
+                        }
+                    },
+                ]
             },
             {
-                test: /\.scss$/,
+                test: /\.scss$/i,
                 include: [
                     helpers.root('projects/the-one-ui-app/src')
                 ],
                 use: [
                     'to-string-loader',
-                    'raw-loader',
+                    'style-loader',
+                    'css-loader',
                     'sass-loader',
                     {
                         loader: 'sass-resources-loader',
