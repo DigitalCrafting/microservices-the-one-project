@@ -45,27 +45,6 @@ module.exports = {
                 ]
             },
             {
-                test: /\.scss$/i,
-                include: [
-                    helpers.root('projects/the-one-ui-app/src')
-                ],
-                use: [
-                    'to-string-loader',
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader',
-                    {
-                        loader: 'sass-resources-loader',
-                        options: {
-                            resources: [
-                                './assets/scss/_vars.scss',
-                                './assets/scss/_mixins.scss'
-                            ]
-                        }
-                    }
-                ]
-            },
-            {
                 test: /\.css$/,
                 exclude: [
                     helpers.root('projects/the-one-ui-app/src')
@@ -112,6 +91,7 @@ module.exports = {
             /(.+)?angular(\\|\/)core(.+)?/,
             helpers.root('projects/the-one-ui-app/src/app')
         ),
+        new miniCssExtractPlugin(),
         new webpack.LoaderOptionsPlugin({
             options: {
                 packages: {

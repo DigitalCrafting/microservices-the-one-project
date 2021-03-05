@@ -50,6 +50,28 @@ module.exports = merge(commonConfig, {
                 ]
             },
             {
+                test: /\.scss$/,
+                include: [
+                    helpers.root('projects/the-one-discovery-ui-app/src'),
+                    helpers.root('assets/scss')
+                ],
+                use: [
+                    'to-string-loader',
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: [
+                                './assets/scss/_vars.scss',
+                                './assets/scss/_mixins.scss'
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
                 enforce: 'pre',
                 test: /\.js$/,
                 loader: 'source-map-loader',

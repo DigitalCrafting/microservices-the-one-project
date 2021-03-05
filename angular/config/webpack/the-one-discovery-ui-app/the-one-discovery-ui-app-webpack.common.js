@@ -112,6 +112,7 @@ module.exports = {
             /(.+)?angular(\\|\/)core(.+)?/,
             helpers.root('projects/the-one-discovery-ui-app/src/app')
         ),
+        new miniCssExtractPlugin(),
         new webpack.LoaderOptionsPlugin({
             options: {
                 packages: {

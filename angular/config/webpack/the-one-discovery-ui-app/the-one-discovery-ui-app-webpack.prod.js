@@ -24,10 +24,54 @@ module.exports = merge(commonConfig, {
                 test: /(?:\.ngfactory\.js|\.ngstyle\.js|\.ts|\.d\.ts)$/,
                 loader: '@ngtools/webpack',
                 include: [
-                    helpers.root('projects/the-one-discovery-ui-app/src/app/'),
+                    helpers.root('projects/the-one-discovery-ui-app/src/'),
                     helpers.root('projects/the-one-core/')
                 ]
-            }
+            },
+            {
+                test: /\.scss$/,
+                include: [
+                    helpers.root('projects/the-one-discovery-ui-app/src/styles.scss')
+                ],
+                use: [
+                    'to-string-loader',
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: [
+                                './assets/scss/_vars.scss',
+                                './assets/scss/_mixins.scss'
+                            ]
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.scss$/,
+                include: [
+                    helpers.root('projects/the-one-discovery-ui-app/src'),
+                    helpers.root('assets/scss')
+                ],
+                exclude: [
+                    helpers.root('projects/the-one-discovery-ui-app/src/styles.scss')
+                ],
+                use: [
+                    'raw-loader',
+                    'sass-loader',
+                    {
+                        loader: 'sass-resources-loader',
+                        options: {
+                            resources: [
+                                './assets/scss/_vars.scss',
+                                './assets/scss/_mixins.scss'
+                            ]
+                        }
+                    }
+                ]
+            },
         ]
     },
 

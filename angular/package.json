@@ -7,8 +7,8 @@
     "test": "karma start",
     "start-the-one-ui-app": "webpack serve --config config/webpack/the-one-ui-app/the-one-ui-app-webpack.dev.js --inline --progress --port 3000 --hot",
     "start-the-one-discovery-ui-app": "webpack serve --config config/webpack/the-one-discovery-ui-app/the-one-discovery-ui-app-webpack.dev.js --inline --progress --port 3000 --hot",
-    "build-the-one-ui-app": "rimraf dist/dist-fea && webpack --config config/webpack/the-one-ui-app/the-one-ui-app-webpack.prod.js --progress --profile --bail",
-    "build-the-one-discovery-ui-app": "rimraf dist/dist-fea && webpack --config config/webpack/the-one-discovery-ui-app/the-one-discovery-ui-app-webpack.prod.js --progress --profile --bail"
+    "build-the-one-ui-app": "rimraf dist/dist-the-one-ui && webpack --config config/webpack/the-one-ui-app/the-one-ui-app-webpack.prod.js --progress --profile --bail",
+    "build-the-one-discovery-ui-app": "rimraf dist/dist-the-one-discovery-ui && webpack --config config/webpack/the-one-discovery-ui-app/the-one-discovery-ui-app-webpack.prod.js --progress --profile --bail"
   },
   "repository": {
     "type": "git",
