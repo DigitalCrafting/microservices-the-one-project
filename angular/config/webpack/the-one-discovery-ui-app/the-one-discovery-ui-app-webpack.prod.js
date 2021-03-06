@@ -88,10 +88,6 @@ module.exports = merge(commonConfig, {
             tsConfigPath: 'projects/the-one-discovery-ui-app/tsconfig.app.json',
             entryModule: 'projects/the-one-discovery-ui-app/src/app/app.module#AppModule'
         }),
-        new miniCssExtractPlugin({
-            filename: '[name].[hash].css',
-            chunkFilename: '[id].[hash].chunk.css'
-        }),
         new webpack.LoaderOptionsPlugin({
             htmlLoader: {
                 minimize: true
