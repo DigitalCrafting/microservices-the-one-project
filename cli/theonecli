@@ -7,7 +7,7 @@ FILE_DIRECTORY = os.path.dirname(os.path.realpath(__file__))
 
 os.chdir(f"{FILE_DIRECTORY}/..")
 WORKING_DIR = os.getcwd()
-VERSION = "0.1.0"
+VERSION = "0.1.1"
 
 servicesDict = {
     "user": {
@@ -25,6 +25,10 @@ servicesDict = {
     "discovery": {
         "dir": f"{WORKING_DIR}/java/service-discovery",
         "docker-image": "digitalcrafting/the-one-discovery"
+    },
+    "ui": {
+        "dir": f"{WORKING_DIR}/java/the-one-ui",
+        "docker-image": "digitalcrafting/the-one-ui"
     }
 }
 
@@ -43,7 +47,7 @@ def local_build(servicesStr, profile):
     services = get_services_as_list(servicesStr)
 
     for ser in services:
-        if ser != "discovery":
+        if ser != "discovery" and ser != "ui":
             os.system(
                 f'cp ./cli/envs/wait-for-service-{profile}.sh {servicesDict[ser]["dir"]}/scripts/wait-for-service.sh'
             )
@@ -67,7 +71,7 @@ def docker_build(servicesStr, profile):
     services = get_services_as_list(servicesStr)
 
     for ser in services:
-        if ser != "discovery":
+        if ser != "discovery" and ser != "ui":
             os.system(
                 f'cp ./cli/envs/wait-for-service-{profile}.sh {servicesDict[ser]["dir"]}/scripts/wait-for-service.sh'
             )
