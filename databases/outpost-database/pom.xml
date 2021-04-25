@@ -7,7 +7,7 @@
 
     <modelVersion>4.0.0</modelVersion>
     <version>0.0.1-SNAPSHOT</version>
-    <artifactId>db-outpost-schema</artifactId>
+    <artifactId>outpost-database</artifactId>
     <packaging>pom</packaging>
 
     <build>
@@ -17,12 +17,12 @@
                 <artifactId>flyway-maven-plugin</artifactId>
                 <version>4.2.0</version>
                 <configuration>
-                    <driver/>
-                    <url></url>
-                    <user></user>
-                    <password></password>
+                    <driver>com.mysql.jdbc.Driver</driver>
+                    <url>jdbc:mysql://localhost:6034/outpost_db</url>
+                    <user>outpost_service</user>
+                    <password>outpost_service_pass</password>
                     <locations>
-                        filesystem:/migration
+                        filesystem:./migration
                     </locations>
                 </configuration>
             </plugin>
