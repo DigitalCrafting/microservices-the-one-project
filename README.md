@@ -15,11 +15,9 @@ The project architecture will evolve with time and I will try to document he who
 
 For now in order to build all of the services the requirements are:
 1. [Java 11](https://www.azul.com/downloads/zulu-community/?package=jdk) + [Maven](https://maven.apache.org/download.cgi)
-2. [Go](https://golang.org/dl/) 
-3. [Haskell](https://www.haskell.org/platform/linux.html) + [Cabal](https://www.haskell.org/cabal/)
-4. [Docker](https://docs.docker.com/engine/install/debian/)
-5. [Docker-compose](https://docs.docker.com/compose/install/)
-6. [Python3](https://www.python.org/downloads/) (comes with linux) + [Flask](https://pypi.org/project/Flask/) + [click](https://pypi.org/project/click/)
+2. [Docker](https://docs.docker.com/engine/install/debian/)
+3. [Docker-compose](https://docs.docker.com/compose/install/)
+4. [Python3](https://www.python.org/downloads/) (comes with linux) + [click](https://pypi.org/project/click/)
 
 In the future I intend to add building the services using docker images instead of locally installed software.
 
