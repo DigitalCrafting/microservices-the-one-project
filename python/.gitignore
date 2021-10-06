@@ -1,5 +1,0 @@
-/venv
-
-# This file is generated
-**/src/config/config.py
-**/scripts/wait-for-service.sh

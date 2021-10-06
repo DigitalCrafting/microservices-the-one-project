@@ -10,14 +10,6 @@ WORKING_DIR = os.getcwd()
 VERSION = "0.1.1"
 
 servicesDict = {
-    "user": {
-        "dir": f"{WORKING_DIR}/python/user-service",
-        "docker-image": "digitalcrafting/the-one-user-service"
-    },
-    "outpost": {
-        "dir": f"{WORKING_DIR}/python/outposts-service",
-        "docker-image": "digitalcrafting/the-one-outpost-service"
-    },
     "gateway": {
         "dir": f"{WORKING_DIR}/java/api-gateway",
         "docker-image": "digitalcrafting/the-one-gateway"
