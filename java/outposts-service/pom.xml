@@ -1,0 +1,56 @@
+<project>
+    <parent>
+        <groupId>org.digitalcrafting.theOne</groupId>
+        <artifactId>the-one-parent</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+
+    <modelVersion>4.0.0</modelVersion>
+    <artifactId>outposts-service</artifactId>
+    <packaging>jar</packaging>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>com.coderplus.maven.plugins</groupId>
+                <artifactId>copy-rename-maven-plugin</artifactId>
+                <version>1.0</version>
+                <executions>
+                    <execution>
+                        <id>copy-file</id>
+                        <phase>generate-sources</phase>
+                        <goals>
+                            <goal>copy</goal>
+                        </goals>
+                        <configuration>
+                            <sourceFile>${env.file}</sourceFile>
+                            <destinationFile>src/main/resources/application.properties</destinationFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>dev-local</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <env.file>src/main/envs/application-dev-local.properties</env.file>
+            </properties>
+        </profile>
+        <profile>
+            <id>dev-docker</id>
+            <properties>
+                <env.file>src/main/envs/application-dev-docker.properties</env.file>
+            </properties>
+        </profile>
+    </profiles>
+</project>
