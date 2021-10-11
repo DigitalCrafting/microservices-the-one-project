@@ -2,8 +2,8 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="org.digitalcrafting.theOne.service.users.repository.UsersMapper">
-    <resultMap id="UserEntityMap" type="org.digitalcrafting.theOne.service.users.repository.UserEntity">
+<mapper namespace="org.digitalcrafting.theOne.service.users.dataaccess.repository.UsersMapper">
+    <resultMap id="UserEntityMap" type="org.digitalcrafting.theOne.service.users.dataaccess.repository.UserEntity">
         <result column="username" property="username"/>
         <result column="password_hash" property="passwordHash"/>
         <result column="first_name" property="firstName"/>

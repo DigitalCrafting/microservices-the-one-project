@@ -1,4 +1,4 @@
-package org.digitalcrafting.theOne.service.users.repository;
+package org.digitalcrafting.theOne.service.users.dataaccess.repository;
 
 import lombok.Data;
 

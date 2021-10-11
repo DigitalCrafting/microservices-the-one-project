@@ -1,6 +1,6 @@
 package org.digitalcrafting.theOne.service.users.domain;
 
-import org.digitalcrafting.theOne.service.users.repository.UserEntity;
+import org.digitalcrafting.theOne.service.users.dataaccess.repository.UserEntity;
 
 import java.util.ArrayList;
 import java.util.List;

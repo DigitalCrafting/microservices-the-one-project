@@ -1,4 +1,4 @@
-package org.digitalcrafting.theOne.serviceDiscovery;
+package org.digitalcrafting.theOne.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,8 +6,8 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 @SpringBootApplication
 @EnableAspectJAutoProxy
-public class Application {
+public class ApiGatewayApplication {
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(ApiGatewayApplication.class, args);
     }
 }

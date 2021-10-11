@@ -36,7 +36,7 @@ public class RestConfig implements WebMvcConfigurer {
         if (env.getProperty("config.debug.allow.cors", "false").equals("true")) {
             registry.addMapping("/**")
                     .allowedOrigins("*")
-                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                    .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "HEAD")
                     .allowCredentials(true);
         }
     }

@@ -1,7 +1,6 @@
-package org.digitalcrafting.theOne.service.users.repository;
+package org.digitalcrafting.theOne.service.users.dataaccess.repository;
 
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 

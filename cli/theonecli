@@ -18,6 +18,10 @@ servicesDict = {
         "dir": f"{WORKING_DIR}/java/service-discovery",
         "docker-image": "digitalcrafting/the-one-discovery"
     },
+   "user": {
+        "dir": f"{WORKING_DIR}/java/users-service",
+        "docker-image": "digitalcrafting/the-one-user-service"
+    },
     "ui": {
         "dir": f"{WORKING_DIR}/java/the-one-ui",
         "docker-image": "digitalcrafting/the-one-ui"

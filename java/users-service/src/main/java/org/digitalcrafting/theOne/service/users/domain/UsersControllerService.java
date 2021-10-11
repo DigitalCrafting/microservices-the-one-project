@@ -1,8 +1,8 @@
 package org.digitalcrafting.theOne.service.users.domain;
 
 import lombok.RequiredArgsConstructor;
-import org.digitalcrafting.theOne.service.users.repository.UserEntity;
-import org.digitalcrafting.theOne.service.users.repository.UsersMapper;
+import org.digitalcrafting.theOne.service.users.dataaccess.repository.UserEntity;
+import org.digitalcrafting.theOne.service.users.dataaccess.repository.UsersMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

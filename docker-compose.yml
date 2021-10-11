@@ -16,6 +16,14 @@ services:
     networks:
       - the-one-network
 
+  the-one-user-service:
+    build: ./java/users-service
+    container_name: the-one-user-service
+    ports:
+      - "8083:8083"
+    networks:
+      - the-one-network
+
   the-one-user-db:
     image: mysql:5.7
     container_name: the-one-user-db
@@ -28,19 +36,21 @@ services:
       - "6033:3306"
     volumes:
       - ./databases/user-database/data-dump/volume:/var/lib/mysql
+    networks:
+      - the-one-network
 
-  the-one-outpost-db:
-    image: mysql:5.7
-    container_name: the-one-outpost-db
-    environment:
-      MYSQL_ROOT_PASSWORD: outpost_db_password
-      MYSQL_DATABASE: outpost_db
-      MYSQL_USER: outpost_service
-      MYSQL_PASSWORD: outpost_service_pass
-    ports:
-      - "6034:3306"
-    volumes:
-      - ./databases/outpost-database/data-dump/volume:/var/lib/mysql
+#  the-one-outpost-db:
+#    image: mysql:5.7
+#    container_name: the-one-outpost-db
+#    environment:
+#      MYSQL_ROOT_PASSWORD: outpost_db_password
+#      MYSQL_DATABASE: outpost_db
+#      MYSQL_USER: outpost_service
+#      MYSQL_PASSWORD: outpost_service_pass
+#    ports:
+#      - "6034:3306"
+#    volumes:
+#      - ./databases/outpost-database/data-dump/volume:/var/lib/mysql
 
 networks:
   the-one-network:
